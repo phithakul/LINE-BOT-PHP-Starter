@@ -5,12 +5,13 @@ $url = 'https://api.line.me/v2/oauth/verify';
 
 $headers = array('Content-Type: application/x-www-form-urlencoded');
 $data = array('access_token' => $access_token);
+$post = http_build_query($data); // http_build_query: Generate URL-encoded query string
 
 $ch = curl_init($url);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data)); // http_build_query: Generate URL-encoded query string
+curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
 $result = curl_exec($ch);
 curl_close($ch);
