@@ -17,9 +17,10 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
+			$replyText = 'ดีจ้า...' . $text;
 			$messages = [
 				'type' => 'text',
-				'text' => $text
+				'text' => $replyText
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
